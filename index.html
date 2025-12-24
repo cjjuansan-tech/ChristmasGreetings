@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Merry Christmas 🎄</title>
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #c62828, #2e7d32);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+.card {
+  position: relative;
+  background: rgba(255,255,255,0.15);
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  max-width: 320px;
+  z-index: 2;
+}
+.santa { font-size: 42px; margin-bottom: 10px; }
+h1 { font-size: 26px; margin-bottom: 15px; }
+button {
+  background: #ffffff;
+  color: #2e7d32;
+  border: none;
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+button:hover { transform: scale(1.05); }
+#msg {
+  display: none;
+  margin-top: 25px;
+  font-size: 20px;
+  animation: fadeIn 0.8s ease;
+}
+@keyframes fadeIn { from {opacity:0; transform:translateY(10px);} to {opacity:1; transform:translateY(0);} }
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: white;
+  user-select: none;
+  pointer-events: none;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+@keyframes fall { to { transform: translateY(110vh); } }
+</style>
+</head>
+<body>
+
+<!-- Online audio (works instantly) -->
+<audio id="music" preload="auto">
+  <source src="mistletoe.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+for (let i=0;i<50;i++){
+  let snow=document.createElement("div");
+  snow.className="snowflake";
+  snow.innerHTML="❄️";
+  snow.style.left=Math.random()*100+"vw";
+  snow.style.animationDuration=(Math.random()*3+3)+"s";
+  snow.style.fontSize=(Math.random()*12+10)+"px";
+  document.body.appendChild(snow);
+}
+function show(){
+  const music=document.getElementById("music");
+  music.volume=0.6;
+  music.play().catch(()=>alert("Click again to enable sound 🔊"));
+  document.getElementById("msg").style.display="block";
+}
+</script>
+
+<div class="card">
+  <div class="santa">🎅🎅🎅</div>
+  <h1>🎄 Touch this 🎄</h1>
+  <button onclick="show()">Touch Me</button>
+  <div id="msg">
+    🎅 Merry Christmas, Mga Laloves ko! <br>
+    Wishing you joy and good vibes 🎁✨
+  </div>
+</div>
+</body>
+</html>
